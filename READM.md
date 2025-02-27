@@ -1,1 +1,0 @@
-# ADELE wannabe com lances ofertados da BEC/SP
