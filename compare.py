@@ -106,3 +106,22 @@ for empresa in sorted(contagem_lote_empresa):
     lances_str = ' | '.join(map(str, lances_lote))
     print(f"- {empresa}: {lances_str}")
 
+# Empresas participantes por lote
+print("\nEmpresas participantes por lote:")
+
+# Inicializa estrutura: lote -> set de empresas
+empresas_por_lote = defaultdict(set)
+
+for empresa, lances in lances_por_empresa.items():
+    for lote, _, _ in lances:
+        empresas_por_lote[lote].add(empresa)
+
+# Imprimir por lote
+for lote in range(1, num_lotes + 1):
+    print(f"\nLote {lote}:")
+    empresas = sorted(empresas_por_lote[lote])
+    if not empresas:
+        print("  Nenhuma empresa participou deste lote.")
+    else:
+        for idx, nome in enumerate(empresas, start=1):
+            print(f"{idx}. {nome}")
